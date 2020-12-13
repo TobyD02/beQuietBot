@@ -20,4 +20,4 @@ async def on_voice_state_update(member, before, after):
         if(after.mute == False):
             await member.edit(mute=True)
 
-client.run('Nzg3NzU3MDk4NTI3NjIxMTMw.X9Zl-A.BHZ3EFmuQOn2ufjA8myB9Y8ysuA')
+client.run(TOKEN)
