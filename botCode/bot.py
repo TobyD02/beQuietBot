@@ -1,9 +1,11 @@
 import discord
+import json
 
-users = {"Toby": 239721016358731776, "Huw": 234751513266880512, "Tommy": 234752682978574336,
-         "Adam": 186801742220886016, "Ben": 727195647912050860, "Cas": 261218381129187339,
-         "Summer": 781317430991388683, "Ella": 781317430991388683, "Joe": 467324781184811018,
-         "Jacob": 766318299726217236, "Sam": 706159503724511373, "Leon": 494563916903350273}
+with open("poultonpeeps.json") as json_file:
+    pp = json.load(json_file)
+
+users = pp["Users"]
+TOKEN = pp["Token"]
 
 client = discord.Client()
 
