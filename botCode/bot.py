@@ -19,9 +19,24 @@ bot = commands.Bot('!')
 @bot.command()
 async def comeback(ctx, ):
     if ctx.message.author.id not in targets:
-        index = random.randint(0, len(comebacks))
+        index = random.randint(0, len(comebacks) - 1)
         await ctx.send(comebacks[index])
 
+@bot.command()
+async def mute(ctx, member: discord.Member = None):
+    if ctx.message.author.id not in targets:
+        if member == None:
+            await ctx.message.author.edit(mute = True)
+        else:
+            await member.edit(mute = True)
+
+@bot.command()
+async def unmute(ctx, member: discord.Member = None):
+    if ctx.message.author.id not in targets:
+        if member == None:
+            await ctx.message.author.edit(mute = False)
+        else:
+            await member.edit(mute = False)
 
 @bot.command()
 async def target(ctx, member: discord.Member = None):
@@ -63,6 +78,7 @@ async def on_voice_state_update(member, before, after):
     if(member.id in targets):
         if(after.mute == False):
             await member.edit(mute=True)
+            #await member.move_to(None)
 
 
 
